@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Internal VideoDecoder</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="shortcut icon" type="image/png" href="https://assets.digitalocean.com/logos/favicon.png"/>
+
+    <style>
+
+table {
+
+  font-family: arial, sans-serif;
+
+  border-collapse: collapse;
+
+  width: 100%;
+
+}
+
+
+
+td, th {
+
+  border: 1px solid #dddddd;
+
+  text-align: left;
+
+  padding: 8px;
+
+}
+
+
+
+tr:nth-child(even) {
+
+  background-color: #dddddd;
+
+}
+
+
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+<nav aria-label="main navigation" class="navbar is-light" role="navigation">
+
+    <div class="navbar-brand">
+
+        <div class="navbar-item">
+
+            <img atl="DigitalOcean" src="https://assets.digitalocean.com/logos/DO_Logo_icon_blue.png"
+
+                 style="margin-right: 0.5em;">News4U
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<form id ="queryForm" name = "queryForm" action = "https://c43w8otvfe.execute-api.us-west-1.amazonaws.com/test/videodata" method = "GET">
+
+    <table id="query_table">
+
+        <tr>
+
+            <th><select name="party" id="party-select">
+
+            <option value="jsp">JanaSena Party</option>
+
+            <option value="tdp">Telugu Desam Party</option>
+
+            <option value="ysrcp">YSRCP Party</option>
+
+            </select></th>
+
+            <th><input type="text" name="publishedAt" size = 100 value="yyyy-mm-dd" ></th>
+
+        </tr>
+
+    </table>
+
+    <input id="query_submit" type="submit" value="Submit">
+
+    <br>
+
+    <br>
+
+    <br>
+
+</form>
+
+
+
+
+
+<form id="myForm" name="myForm" action="submit"
+
+      method="POST"> {% csrf_token %}
+
+
+
+    <table id="form_table">
+
+        <tr>
+
+            <th>VideoID</th>
+
+            <th><input type="text" name="video_id" size = 100 value="{{ droplets.video_id }}" ></th>
+
+        </tr>
+
+        <tr>
+
+            <th>PublishedAt</th>
+
+            <th><input type="text" name="publishedAt" size = 100 value="{{ droplets.publishedAt }}" ></th>
+
+        </tr>
+
+        <tr>
+
+            <th>Search_kind</th>
+
+            <th><input type="text" name="search_kind" size = 100 value="{{ droplets.search_kind }}" ></th>
+
+        </tr>
+
+        <tr>
+
+            <th>Search_etag</th>
+
+            <th><input type="text" name="search_etag" size = 100 value="{{ droplets.search_etag }}" ></th>
+
+        </tr>
+
+        <tr>
+
+            <th>Video_kind</th>
+
+            <th><input type="text" name="video_kind" size = 100 value="{{ droplets.video_kind }}" ></th>
+
+        </tr>
+
+        <tr>
+
+            <th>Video_title</th>
+
+            <th><input type="text" name="video_title" size = 100 value="{{ droplets.video_title }}" ></th>
+
+        </tr>
+
+        <tr>
+
+            <th>description</th>
+
+            <th><input type="text" name="description" size = 150 value="{{ droplets.description }}" ></th>
+
+        </tr>
+
+        <tr>
+
+            <th>channel_title</th>
+
+            <th><input type="text" name="channel_title" size = 100 value="{{ droplets.channel_title }}" ></th>
+
+        </tr>
+
+        <tr>
+
+            <th>channel_id</th>
+
+            <th><input type="text" name="channel_id" size = 100 value="{{ droplets.channel_id }}" ></th>
+
+        </tr>
+
+        <tr>
+
+            <th>image_default_url</th>
+
+            <th><input type="text" name="image_default_url" size = 100 value="{{ droplets.image_default_url }}" ></th>
+
+        </tr>
+
+        <tr>
+
+            <th>image_default_width</th>
+
+            <th><input type="text" name="image_default_width" size = 100 value="{{ droplets.image_default_width }}" ></th>
+
+        </tr>
+
+        <tr>
+
+            <th>image_default_height</th>
+
+            <th><input type="text" name="image_default_height" size = 100 value="{{ droplets.image_default_height }}" ></th>
+
+        </tr>
+
+        <tr>
+
+            <th>image_medium</th>
+
+            <th><input type="text" name="image_medium" size = 100 value="{{ droplets.image_medium }}" ></th>
+
+        </tr>
+
+        <tr>
+
+            <th>image_medium_width</th>
+
+            <th><input type="text" name="image_medium_width" size = 100 value="{{ droplets.image_medium_width }}" ></th>
+
+        </tr>
+
+        <tr>
+
+            <th>image_medium_height</th>
+
+            <th><input type="text" name="image_medium_height" size = 100 value="{{ droplets.image_medium_height }}" ></th>
+
+        </tr>
+
+        <tr>
+
+            <th>image_high</th>
+
+            <th><input type="text" name="image_high" size = 100 value="{{ droplets.image_high }}" ></th>
+
+        </tr>
+
+        <tr>
+
+            <th>Image_High_Width</th>
+
+            <th><input type="text" name="image_high_width" size = 100 value="{{ droplets.image_high_width }}" ></th>
+
+        </tr>
+
+        <tr>
+
+            <th>Image_High_Height</th>
+
+            <th><input type="text" name="image_high_height" size = 100 value="{{ droplets.image_high_height }}" ></th>
+
+        </tr>
+
+        <tr>
+
+            <th>Tags_Provided</th>
+
+            <th><input type="text" name="tags" size = 100 value="{{ droplets.tags }}" ></th>
+
+        </tr>
+
+
+
+        <tr>
+
+            <th>Live_Broadcast_Content</th>
+
+            <th><input type="text" name="liveBroadcastContent" size = 100 value="{{ droplets.liveBroadcastContent }}" ></th>
+
+        </tr>
+
+        <tr>
+
+            <th>validity_status</th>
+
+            <th><input type="text" name="status" size = 100 value="{{ droplets.validity_status }}" ></th>
+
+        </tr>
+
+        <tr>
+
+            <th>New_Video_Title</th>
+
+            <th><input type="text" id = 'new_title' name="new_title" size="100" value=""></th>
+
+        </tr>
+
+        <tr>
+
+            <th>Video_Url</th>
+
+            <th><input type="text" id = 'video_url' name="video_url" size = 100 value="{{ droplets.video_url }}" >
+
+            <input type="button" id="btnPlay" value="Play"/></th>
+
+        </tr>
+
+        <tr>
+
+            <th>Video</th>
+
+            <th><embed id="video" src="" wmode="transparent" type="application/x-shockwave-flash"
+
+           width="840" height="315" allowfullscreen="true" title="Adobe Flash Player"></embed></th>
+
+        </tr>
+	
+	<!-- <tr>
+	<th>English Text </th>
+	<th><textarea name="english_text" rows="50" cols="100"></textarea><br></th>
+	</tr>
+-->
+
+
+        <tr>
+
+            <th>Notes</th>
+
+            <th><textarea name="notes" rows="10" cols="100"></textarea><br></th>
+
+        </tr>
+
+        <tr>
+
+            <th>Topics_Covered</th>
+
+            <th><textarea name="topics" rows="5" cols="100"></textarea></th>
+
+        </tr>
+
+        <tr>
+
+            <th>Speakers</th>
+
+            <th><textarea name="speakers" rows="5" cols="100"></textarea></th>
+
+        </tr>
+
+        <tr>
+
+            <th>Questions</th>
+
+            <th><textarea name="questions" rows="5" cols="100"></textarea></th>
+
+        </tr>
+
+        <tr>
+
+            <th>Summary</th>
+
+            <th><textarea name="summary" rows="5" cols="100"></textarea></th>
+
+        </tr>
+
+        <tr>
+
+            <th>Video_Intended_to</th>
+
+            <th><select id="video_intended[]" name = "video_intended[]" multiple="multiple">
+
+            <option value="attacking">Attacking</option>
+
+            <option value="defending">Defending</option>
+
+            <option value="suggesting">Suggesting</option>
+
+            <option value="supporting">Supporting</option>
+
+            <option value="promotion">Promotion</option>
+
+            <option value="fact_check">Fact-Check</option>
+
+            </select></th>
+
+        </tr>
+
+        <tr>
+
+            <th>Related_Departments</th>
+
+            <th><textarea name="related_departments" rows="5" cols="100"></textarea></th>
+
+        </tr>
+
+        <tr>
+
+            <th>Party_Status</th>
+
+            <th><select id="party_status" name = "party_status[]" multiple="multiple">
+
+            <option value="ruling">Ruling</option>
+
+            <option value="opposition">Opposition</option>
+
+            <option value="independent">Independent</option>
+
+            </select></th>
+
+        </tr>
+
+        <tr>
+
+            <th>Topic_Scope</th>
+
+            <th><textarea name="topic_scope" rows="5" cols="100"></textarea></th>
+
+        </tr>
+
+        <tr>
+
+            <th>Target_Parties</th>
+
+            <th><textarea name="target_parties" rows="5" cols="100"></textarea></th>
+
+        </tr>
+        <tr>
+
+            <th>English_Text</th>
+
+            <th><textarea name="english_text" rows="5" cols="100"></textarea></th>
+
+        </tr>
+        <tr>
+
+            <th>Telugu_Text</th>
+
+            <th><textarea name="telugu_text" rows="5" cols="100"></textarea></th>
+
+        </tr>
+
+
+
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+    $("body").on("click", "#btnPlay", function () {
+
+        var url = $("#video_url").val();
+
+        url = url.split('v=')[1];
+
+        url = "https://www.youtube.com/v/" + url
+
+        url = url.split("'")[0]
+
+        $("#video")[0].src = url;
+
+    });
+
+
+
+    </script>
+
+
+
+    <script type="text/javascript">
+
+  $(document).ready(function() {
+
+  $("#submit").click(function(e){
+
+     var jsonData = {};
+
+
+
+    var formData = $("#myform").serializeArray();
+
+    $.each(formData, function() {
+
+        if (jsonData[this.video_title]) {
+
+           if (!jsonData[this.video_title].push) {
+
+               jsonData[this.video_title] = [jsonData[this.video_title]];
+
+           }
+
+           jsonData[this.video_title].push(this.video_title || '');
+
+       } else {
+
+           jsonData[this.video_title] = this.value || '';
+
+       }
+
+       });
+
+   console.log(jsonData);
+
+    $.ajax(
+
+    {
+
+        url : "action.php",
+
+        type: "POST",
+
+        data : https://c43w8otvfe.execute-api.us-west-1.amazonaws.com/test/updatevideodata,
+
+
+
+    });
+
+    e.preventDefault();
+
+});
+
+});
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <input id="submit" type="submit" value="Submit">
+
+</form>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+
+  <!--videoID = $("#fname").val();-->
+
+    <!--$("#submit").click(function(){-->
+
+        <!--$.post("https://c43w8otvfe.execute-api.us-west-1.amazonaws.com/test/updatevideodata", { username:username} ,function(data){-->
+
+            <!--alert(data);-->
+
+        <!--});-->
+
+    <!--});-->
+
+<!--});-->
+
+
+
+</script>
+
+</body>
+
+</html>

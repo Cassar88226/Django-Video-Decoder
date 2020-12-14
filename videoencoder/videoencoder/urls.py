@@ -6,8 +6,7 @@ from main import views
 
 
 urlpatterns = [
-    #path('', include('hello_world.urls')),
+    path('', include('main.urls')),
     path('admin/', admin.site.urls),
-    path('', GetDroplets.as_view(template_name='droplets.html'), name='Droplet View'),
     url(r'^submit', views.submit)
 ]

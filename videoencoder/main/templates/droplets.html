@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 
 <html lang="en">
@@ -7,6 +8,7 @@
     <meta charset="UTF-8">
 
     <title>Internal VideoDecoder</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/main.css' %}">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 
@@ -52,9 +54,11 @@ tr:nth-child(even) {
 
 </head>
 
-<body>
+<body class='login'>
 
+<div class="container">
 
+{% if request.user.is_authenticated %}
 
 <nav aria-label="main navigation" class="navbar is-light" role="navigation">
 
@@ -69,6 +73,7 @@ tr:nth-child(even) {
         </div>
 
     </div>
+    <div ><a href="#" id='menu_logout'>Log out</a></div>
 
 </nav>
 
@@ -555,30 +560,58 @@ tr:nth-child(even) {
 
 </form>
 
+{% else %}
 
+<!-- Container -->
+<div id="container">
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+            <h1 id="site-name">Log in</a></h1>
+        </div>
+    </div>
+    <!-- END Header -->
+
+    <div class="main shifted" id="main">
+      <div class="content">
+        <!-- Content -->
+        <div id="content" class="colM">
+            <div id="content-main">
+                <form method="POST" id="login-form" onsubmit="event.preventDefault(); return false;">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <p id="errornote" ></p>
+                    </div>
+                    <div class="form-row">
+                        
+                        <label class="required" for="id_username">Username:</label> <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
+                    </div>
+                    <div class="form-row">
+                        
+                        <label class="required" for="id_password">Password:</label> <input type="password" name="password" autocomplete="current-password" required="" id="id_password">
+                        <input type="hidden" name="next" value="/admin/">
+                    </div>
+                    
+                    
+                    <div class="submit-row">
+                        <input type="submit" class = "menu__login__form__submit" value="Log in">
+                    </div>
+                </form>
+                <div class="submit-row"><a class="menu_sign_up" href="sign_up">Sign up</a></div>
+
+            </div>
+            <br class="clear">
+        </div>
+        <!-- END Content -->
+        <div id="footer"></div>
+      </div>
+    </div>
+</div>
+{% endif %}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<script>
-
-  <!--videoID = $("#fname").val();-->
-
-    <!--$("#submit").click(function(){-->
-
-        <!--$.post("https://c43w8otvfe.execute-api.us-west-1.amazonaws.com/test/updatevideodata", { username:username} ,function(data){-->
-
-            <!--alert(data);-->
-
-        <!--});-->
-
-    <!--});-->
-
-<!--});-->
-
-
-
-</script>
-
+<script src="{% static 'main/main.js' %}"></script>
+</div>
 </body>
 
 </html>

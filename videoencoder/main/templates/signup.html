@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Internal VideoDecoder</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/main.css' %}">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="shortcut icon" type="image/png" href="https://assets.digitalocean.com/logos/favicon.png"/>
+
+</head>
+<body class='login'>
+    <div id="container">
+        <div id="header">
+            <div id="branding">
+                <h1 id="site-name">Sign up</a></h1>
+            </div>
+        </div>
+    <div class="main shifted" id="main">
+        <div class="content">
+            <!-- Content -->
+            <div id="content" class="colM">
+                <div id="content-main">
+                    <form method="post">
+                        {% csrf_token %}
+                        {% for field in form %}
+                        <div class='form-row'>
+                            {{ field.label_tag }}<br>
+                            {{ field }}<br>
+                            {{ field.errors}}
+                        </div>
+                        {% endfor %}
+                        <div class='submit-row'>
+                            <button type="submit">Sign up</button>
+                        </div>
+                        <div class='submit-row'>
+                            <a class="menu_log_in" href="../">Log in</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </body>
+    </html>

@@ -1,16 +1,50 @@
 import json
 import requests
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 
 # Create your views here.
 
 from django.views.generic import TemplateView
+from django.contrib.auth import authenticate, login, logout
+from .forms import SignupForm
 
+# log in function
+def log_in(request):
+    _email = request.GET.get('_email', '')
+    _pwd = request.GET.get('_pwd')
+    user = authenticate(username=_email, password = _pwd)
+    if user is not None: 
+        login(request, user) 
+        data = {
+            'content' :'ok' 
+        }
+        
+    else: 
+        data = {
+            'content' : 'unregistered'
+        }
+    return JsonResponse(data)
+# log out function
+def log_out(request):
+    logout(request)
+    return JsonResponse({'content':'ok'})
 
-
+def signup(request):
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('/')
+    else:
+        form = SignupForm()
+    return render(request, 'signup.html', {'form': form})
 class GetDroplets(TemplateView):
     template_name = 'droplets.html'
     def get_context_data(self):

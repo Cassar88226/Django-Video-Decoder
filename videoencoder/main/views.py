@@ -103,7 +103,10 @@ def submit(request):
         topic_scope= request.POST.get('topic_scope')
 
         english_text = request.POST.get('english_text')
-        telugu_text = request_POST.get('telugu_text')
+        telugu_text = request.POST.get('telugu_text')
+
+        json_value = request.POST.get('json_value')
+        print(json_value)
 
         #Step1: Notes and Topics Section Validation
 

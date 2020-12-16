@@ -9,6 +9,7 @@
 
     <title>Internal VideoDecoder</title>
     <link rel="stylesheet" type="text/css" href="{% static 'main/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/jsoneditor.css' %}">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 
@@ -444,6 +445,13 @@ tr:nth-child(even) {
 
         </tr>
 
+        <tr>
+
+            <th>Json Editer</th>
+
+            <th><div id='editor' class='json-editor'></div><textarea name="json_value" rows="5" cols="100" id="json_value" style="display: none;"></textarea></th>
+
+        </tr>
 
 
     </table>
@@ -477,8 +485,6 @@ tr:nth-child(even) {
         $("#video")[0].src = url;
 
     });
-
-
 
     </script>
 
@@ -610,6 +616,8 @@ tr:nth-child(even) {
 {% endif %}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="{% static 'main/jquery.jsoneditor.js' %}"></script>
+<script src="{% static 'main/jsoneditor.js' %}"></script>
 <script src="{% static 'main/main.js' %}"></script>
 </div>
 </body>

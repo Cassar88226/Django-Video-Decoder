@@ -4,6 +4,7 @@ from django.contrib.auth import views as auth_views
 
 from . import views
 from .views import GetDroplets
+
 app_name = 'main'
 urlpatterns = [
     path('log_in/', views.log_in, name='index'),

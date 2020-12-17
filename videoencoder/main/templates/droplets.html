@@ -10,7 +10,6 @@
     <title>Internal VideoDecoder</title>
     <link rel="stylesheet" type="text/css" href="{% static 'main/main.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'main/jsoneditor.css' %}">
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -128,7 +127,7 @@ tr:nth-child(even) {
 
             <th>VideoID</th>
 
-            <th><input type="text" name="video_id" size = 100 value="{{ droplets.video_id }}" ></th>
+            <th><input type="text" name="video_id" size = 100 value="{{ droplets.video_id }}" readonly ></th>
 
         </tr>
 
@@ -136,7 +135,7 @@ tr:nth-child(even) {
 
             <th>PublishedAt</th>
 
-            <th><input type="text" name="publishedAt" size = 100 value="{{ droplets.publishedAt }}" ></th>
+            <th><input type="text" name="publishedAt" size = 100 value="{{ droplets.publishedAt }}" readonly></th>
 
         </tr>
 
@@ -144,7 +143,7 @@ tr:nth-child(even) {
 
             <th>Search_kind</th>
 
-            <th><input type="text" name="search_kind" size = 100 value="{{ droplets.search_kind }}" ></th>
+            <th><input type="text" name="search_kind" size = 100 value="{{ droplets.search_kind }}" readonly></th>
 
         </tr>
 
@@ -152,7 +151,7 @@ tr:nth-child(even) {
 
             <th>Search_etag</th>
 
-            <th><input type="text" name="search_etag" size = 100 value="{{ droplets.search_etag }}" ></th>
+            <th><input type="text" name="search_etag" size = 100 value="{{ droplets.search_etag }}" readonly></th>
 
         </tr>
 
@@ -160,7 +159,7 @@ tr:nth-child(even) {
 
             <th>Video_kind</th>
 
-            <th><input type="text" name="video_kind" size = 100 value="{{ droplets.video_kind }}" ></th>
+            <th><input type="text" name="video_kind" size = 100 value="{{ droplets.video_kind }}" readonly></th>
 
         </tr>
 
@@ -168,7 +167,7 @@ tr:nth-child(even) {
 
             <th>Video_title</th>
 
-            <th><input type="text" name="video_title" size = 100 value="{{ droplets.video_title }}" ></th>
+            <th><input type="text" name="video_title" size = 100 value="{{ droplets.video_title }}" readonly></th>
 
         </tr>
 
@@ -176,7 +175,7 @@ tr:nth-child(even) {
 
             <th>description</th>
 
-            <th><input type="text" name="description" size = 150 value="{{ droplets.description }}" ></th>
+            <th><input type="text" name="description" size = 150 value="{{ droplets.description }}" readonly></th>
 
         </tr>
 
@@ -184,7 +183,7 @@ tr:nth-child(even) {
 
             <th>channel_title</th>
 
-            <th><input type="text" name="channel_title" size = 100 value="{{ droplets.channel_title }}" ></th>
+            <th><input type="text" name="channel_title" size = 100 value="{{ droplets.channel_title }}" readonly></th>
 
         </tr>
 
@@ -192,7 +191,7 @@ tr:nth-child(even) {
 
             <th>channel_id</th>
 
-            <th><input type="text" name="channel_id" size = 100 value="{{ droplets.channel_id }}" ></th>
+            <th><input type="text" name="channel_id" size = 100 value="{{ droplets.channel_id }}" readonly></th>
 
         </tr>
 
@@ -200,7 +199,7 @@ tr:nth-child(even) {
 
             <th>image_default_url</th>
 
-            <th><input type="text" name="image_default_url" size = 100 value="{{ droplets.image_default_url }}" ></th>
+            <th><input type="text" name="image_default_url" size = 100 value="{{ droplets.image_default_url }}" readonly></th>
 
         </tr>
 
@@ -208,7 +207,7 @@ tr:nth-child(even) {
 
             <th>image_default_width</th>
 
-            <th><input type="text" name="image_default_width" size = 100 value="{{ droplets.image_default_width }}" ></th>
+            <th><input type="text" name="image_default_width" size = 100 value="{{ droplets.image_default_width }}" readonly></th>
 
         </tr>
 
@@ -216,7 +215,7 @@ tr:nth-child(even) {
 
             <th>image_default_height</th>
 
-            <th><input type="text" name="image_default_height" size = 100 value="{{ droplets.image_default_height }}" ></th>
+            <th><input type="text" name="image_default_height" size = 100 value="{{ droplets.image_default_height }}" readonly></th>
 
         </tr>
 
@@ -224,7 +223,7 @@ tr:nth-child(even) {
 
             <th>image_medium</th>
 
-            <th><input type="text" name="image_medium" size = 100 value="{{ droplets.image_medium }}" ></th>
+            <th><input type="text" name="image_medium" size = 100 value="{{ droplets.image_medium }}" readonly></th>
 
         </tr>
 
@@ -232,7 +231,7 @@ tr:nth-child(even) {
 
             <th>image_medium_width</th>
 
-            <th><input type="text" name="image_medium_width" size = 100 value="{{ droplets.image_medium_width }}" ></th>
+            <th><input type="text" name="image_medium_width" size = 100 value="{{ droplets.image_medium_width }}" readonly></th>
 
         </tr>
 
@@ -240,7 +239,7 @@ tr:nth-child(even) {
 
             <th>image_medium_height</th>
 
-            <th><input type="text" name="image_medium_height" size = 100 value="{{ droplets.image_medium_height }}" ></th>
+            <th><input type="text" name="image_medium_height" size = 100 value="{{ droplets.image_medium_height }}" readonly></th>
 
         </tr>
 
@@ -248,7 +247,7 @@ tr:nth-child(even) {
 
             <th>image_high</th>
 
-            <th><input type="text" name="image_high" size = 100 value="{{ droplets.image_high }}" ></th>
+            <th><input type="text" name="image_high" size = 100 value="{{ droplets.image_high }}" readonly></th>
 
         </tr>
 
@@ -256,7 +255,7 @@ tr:nth-child(even) {
 
             <th>Image_High_Width</th>
 
-            <th><input type="text" name="image_high_width" size = 100 value="{{ droplets.image_high_width }}" ></th>
+            <th><input type="text" name="image_high_width" size = 100 value="{{ droplets.image_high_width }}" readonly></th>
 
         </tr>
 
@@ -264,7 +263,7 @@ tr:nth-child(even) {
 
             <th>Image_High_Height</th>
 
-            <th><input type="text" name="image_high_height" size = 100 value="{{ droplets.image_high_height }}" ></th>
+            <th><input type="text" name="image_high_height" size = 100 value="{{ droplets.image_high_height }}" readonly></th>
 
         </tr>
 
@@ -282,7 +281,7 @@ tr:nth-child(even) {
 
             <th>Live_Broadcast_Content</th>
 
-            <th><input type="text" name="liveBroadcastContent" size = 100 value="{{ droplets.liveBroadcastContent }}" ></th>
+            <th><input type="text" name="liveBroadcastContent" size = 100 value="{{ droplets.liveBroadcastContent }}" readonly></th>
 
         </tr>
 
@@ -290,7 +289,7 @@ tr:nth-child(even) {
 
             <th>validity_status</th>
 
-            <th><input type="text" name="status" size = 100 value="{{ droplets.validity_status }}" ></th>
+            <th><input type="text" name="status" size = 100 value="{{ droplets.validity_status }}" readonly></th>
 
         </tr>
 
@@ -306,7 +305,7 @@ tr:nth-child(even) {
 
             <th>Video_Url</th>
 
-            <th><input type="text" id = 'video_url' name="video_url" size = 100 value="{{ droplets.video_url }}" >
+            <th><input type="text" id = 'video_url' name="video_url" size = 100 value="{{ droplets.video_url }}" readonly>
 
             <input type="button" id="btnPlay" value="Play"/></th>
 
@@ -321,19 +320,41 @@ tr:nth-child(even) {
            width="840" height="315" allowfullscreen="true" title="Adobe Flash Player"></embed></th>
 
         </tr>
-	
-	<!-- <tr>
-	<th>English Text </th>
-	<th><textarea name="english_text" rows="50" cols="100"></textarea><br></th>
-	</tr>
--->
+        <tr>
 
+            <th>English_Text</th>
+
+            <th><textarea name="old_english_text" rows="5" cols="100" readonly>{{ droplets.eng_text }}</textarea></th>
+
+        </tr>
+        <tr>
+
+            <th>Telugu_Text</th>
+
+            <th><textarea name="old_telugu_text" rows="5" cols="100" readonly>{{ droplets.telugu_text }}</textarea></th>
+
+        </tr>
+
+        <tr>
+
+            <th>New_English_Text</th>
+
+            <th><textarea name="english_text" rows="5" cols="100" >{{ droplets.eng_text }}</textarea></th>
+
+        </tr>
+        <tr>
+
+            <th>New_Telugu_Text</th>
+
+            <th><textarea name="telugu_text" rows="5" cols="100">{{ droplets.telugu_text }}</textarea></th>
+
+        </tr>
 
         <tr>
 
             <th>Notes</th>
 
-            <th><textarea name="notes" rows="10" cols="100"></textarea><br></th>
+            <th><div id='note_editor' class='json-editor'></div><textarea name="notes" rows="10" cols="100" id='notes' style="display: none;"></textarea><br></th>
 
         </tr>
 
@@ -357,7 +378,7 @@ tr:nth-child(even) {
 
             <th>Questions</th>
 
-            <th><textarea name="questions" rows="5" cols="100"></textarea></th>
+            <th><div id='questions_editor' class='json-editor'></div><textarea name="questions" rows="10" cols="100" id='questions' style="display: none;"></textarea><br></th>
 
         </tr>
 
@@ -365,7 +386,7 @@ tr:nth-child(even) {
 
             <th>Summary</th>
 
-            <th><textarea name="summary" rows="5" cols="100"></textarea></th>
+            <th><div id='summary_editor' class='json-editor'></div><textarea name="summary" rows="5" cols="100" id='summary' style="display: none;"></textarea></th>
 
         </tr>
 
@@ -373,21 +394,23 @@ tr:nth-child(even) {
 
             <th>Video_Intended_to</th>
 
-            <th><select id="video_intended[]" name = "video_intended[]" multiple="multiple">
+            <th>
+                <select id="video_intended[]" name = "video_intended[]" multiple="multiple">
 
-            <option value="attacking">Attacking</option>
+                    <option value="attacking">Attacking</option>
 
-            <option value="defending">Defending</option>
+                    <option value="defending">Defending</option>
 
-            <option value="suggesting">Suggesting</option>
+                    <option value="suggesting">Suggesting</option>
 
-            <option value="supporting">Supporting</option>
+                    <option value="supporting">Supporting</option>
 
-            <option value="promotion">Promotion</option>
+                    <option value="promotion">Promotion</option>
 
-            <option value="fact_check">Fact-Check</option>
+                    <option value="fact_check">Fact-Check</option>
 
-            </select></th>
+                </select>
+            </th>
 
         </tr>
 
@@ -403,15 +426,17 @@ tr:nth-child(even) {
 
             <th>Party_Status</th>
 
-            <th><select id="party_status" name = "party_status[]" multiple="multiple">
+            <th>
+                <select id="party_status" name = "party_status[]" multiple="multiple">
 
-            <option value="ruling">Ruling</option>
+                    <option value="ruling">Ruling</option>
 
-            <option value="opposition">Opposition</option>
+                    <option value="opposition">Opposition</option>
 
-            <option value="independent">Independent</option>
+                    <option value="independent">Independent</option>
 
-            </select></th>
+                </select>
+            </th>
 
         </tr>
 
@@ -419,7 +444,7 @@ tr:nth-child(even) {
 
             <th>Topic_Scope</th>
 
-            <th><textarea name="topic_scope" rows="5" cols="100"></textarea></th>
+            <th><div id='topic_scope_editor' class='json-editor'></div><textarea name="topic_scope" rows="5" cols="100" id="topic_scope", style="display: none;"></textarea></th>
 
         </tr>
 
@@ -430,42 +455,11 @@ tr:nth-child(even) {
             <th><textarea name="target_parties" rows="5" cols="100"></textarea></th>
 
         </tr>
-        <tr>
 
-            <th>English_Text</th>
 
-            <th><textarea name="english_text" rows="5" cols="100"></textarea></th>
-
-        </tr>
-        <tr>
-
-            <th>Telugu_Text</th>
-
-            <th><textarea name="telugu_text" rows="5" cols="100"></textarea></th>
-
-        </tr>
-
-        <tr>
-
-            <th>Json Editer</th>
-
-            <th><div id='editor' class='json-editor'></div><textarea name="json_value" rows="5" cols="100" id="json_value" style="display: none;"></textarea></th>
-
-        </tr>
 
 
     </table>
-
-
-
-
-
-
-
-
-
-
-
 
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -487,80 +481,6 @@ tr:nth-child(even) {
     });
 
     </script>
-
-
-
-    <script type="text/javascript">
-
-  $(document).ready(function() {
-
-  $("#submit").click(function(e){
-
-     var jsonData = {};
-
-
-
-    var formData = $("#myform").serializeArray();
-
-    $.each(formData, function() {
-
-        if (jsonData[this.video_title]) {
-
-           if (!jsonData[this.video_title].push) {
-
-               jsonData[this.video_title] = [jsonData[this.video_title]];
-
-           }
-
-           jsonData[this.video_title].push(this.video_title || '');
-
-       } else {
-
-           jsonData[this.video_title] = this.value || '';
-
-       }
-
-       });
-
-   console.log(jsonData);
-
-    $.ajax(
-
-    {
-
-        url : "action.php",
-
-        type: "POST",
-
-        data : https://c43w8otvfe.execute-api.us-west-1.amazonaws.com/test/updatevideodata,
-
-
-
-    });
-
-    e.preventDefault();
-
-});
-
-});
-
-
-
-
-
-    </script>
-
-
-
-
-
-
-
-
-
-
-
-
 
     <input id="submit" type="submit" value="Submit">
 

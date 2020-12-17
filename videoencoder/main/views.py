@@ -105,221 +105,24 @@ def submit(request):
         english_text = request.POST.get('english_text')
         telugu_text = request.POST.get('telugu_text')
 
-        json_value = request.POST.get('json_value')
-        print(json_value)
 
-        #Step1: Notes and Topics Section Validation
+        # Step1: Get Notes
+        
+        notes_data = json.loads(notes)
 
-        total_notes_topics = notes.split('#')
-        notes_topics_list = []
-        if(len(total_notes_topics)>0):
-            for i in range(1,len(total_notes_topics)):
-                notes_topics_list.append(total_notes_topics[i].split(":")[0])
-                # print(notes_topics_list)
+        # Step2: get topics
 
-        total_topics = topics.split("#")
-        topics_topics_list = []
-        if(len(total_topics)>0):
-            for j in range(1,len(total_topics)):
-                topics_topics_list.append(total_topics[j].split(".")[0])
-                # print(topics_topics_list)
-
-        if(len(notes_topics_list) == len(topics_topics_list)):
-            print("Step1: Total topics mentioned in topics section and notes section match! - {}".format(len(topics_topics_list)))
-        else:
-            print("Step1: Total topics mentioned in notes section and topics section DO NOT match - {} & {}".format(len(notes_topics_list), len(topics_topics_list)))
-
-
-        flag = 0
-        for k in range(len(notes_topics_list)):
-            for l in range(len(topics_topics_list)):
-                if(notes_topics_list[k].upper()==topics_topics_list[l].upper()):
-                    print("Step1: {} matched".format(notes_topics_list[k]))
-                    flag +=1
-                else:
-                    pass
-
-        if(flag == len(notes_topics_list) and flag == len(topics_topics_list)):
-            print("Step1: total topics listed in topics section match with topics listed in notes section")
-
-        else:
-            print("Step1: total topics listed in topics section DOESN't match with topics listed in notes section. Check spelling/format.")
-
-
-        #Step2: Validate the notes section. Check for the text if it has it/he/she/ here/there
-
-        notes_text = notes.splitlines()
-        print(notes_text)
-        data = {}
-        new_data = {}
-        text = []
-        key_flag = 0
-        value_flag = 1
-        key = ''
-        for n in range(len(notes_text)):
-            if('#' in notes_text[n]):
-                if(n == 0):
-                    key = notes_text[n]
-                else:
-                    data = {
-                        key:text
-                    }
-                    new_data.update(data)
-                    print(new_data)
-                    key = notes_text[n]
-                    text = []
-                # print("Key: {}".format(key))
-            else:
-                if(value_flag==n):
-                    text.append(notes_text[n])
-                    value_flag +=1
-                    # print("Value in else: {}".format(text))
-                else:
-                    text.append(notes_text[n])
-                    value_flag == n+1
-                    # print("Value in else-else: {}".format(text))
-        data = {
-            key: text
-        }
-        new_data.update(data)
-        print("Step2: Notes data validation: {} ".format(new_data))
-
-
-
-
+        topics_topics_list = topics.splitlines()
 
         #Step3: Speakers section should be atleast 1. Even automated if required.
-        if(len(speakers)>0):
-            speakers_covered = []
-
-            speaker_list = speakers.split("#")
-
-            for m in range(1,len(speaker_list)):
-
-                speakers_covered.append(speaker_list[m])
-
-            print("Step3: Speakers length is greater than 0. {}".format(speakers))
-
-
+        speakers_covered = speakers.splitlines()
 
         # Step4: Questions section should be atleast 1. Even automated if required.
 
-        if (len(questions) > 0):
-
-            questions_covered = []
-
-            question_list= questions.split('#')
-
-            for m in range(1, len(question_list)):
-
-                questions_covered.append(question_list[m])
-
-            print("Step4: Questions length is greater than 0. {}".format(questions))
-
-
-
-
-
-        questions_text = questions.splitlines()
-        print(questions_text)
-        data = {}
-        questions_data = {}
-        text = []
-        key_flag = 0
-        value_flag = 1
-        key = ''
-        for n in range(len(questions_text)):
-            if ('#' in questions_text[n]):
-                if (n == 0):
-                    key = questions_text[n]
-                else:
-                    data = {
-                        key: text
-                    }
-                    questions_data.update(data)
-                    print(questions_data)
-                    key = questions_text[n]
-                    text = []
-                # print("Key: {}".format(key))
-            else:
-                if (value_flag == n):
-                    text.append(questions_text[n])
-                    value_flag += 1
-                    # print("Value in else: {}".format(text))
-                else:
-                    text.append(questions_text[n])
-                    value_flag == n + 1
-                    # print("Value in else-else: {}".format(text))
-        data = {
-            key: text
-        }
-        questions_data.update(data)
-        print("Step2: Notes data validation: {} ".format(questions_data))
-
-
-
-
-
-
-
-
+        questions_data = json.loads(questions)
 
         # Step5: Summary section should be atleast 1. Even automated if required.
-
-        if (len(summary) > 0):
-            summary_covered = []
-            summary_list= summary.split('#')
-            for m in range(1, len(summary_list)):
-                summary_covered.append(summary_list[m])
-            print("Step5: Summary length is greater than 0. {}".format(summary))
-
-
-
-
-        summary_text = summary.splitlines()
-        print(summary_text)
-        data = {}
-        summary_data = {}
-        text = []
-        key_flag = 0
-        value_flag = 1
-        key = ''
-        for n in range(len(summary_text)):
-            if ('#' in summary_text[n]):
-                if (n == 0):
-                    key = summary_text[n]
-                else:
-                    data = {
-                        key: text
-                    }
-                    summary_data.update(data)
-                    print(summary_data)
-                    key = summary_text[n]
-                    text = []
-
-                # print("Key: {}".format(key))
-            else:
-                if (value_flag == n):
-                    text.append(summary_text[n])
-                    value_flag += 1
-                    # print("Value in else: {}".format(text))
-                else:
-                    text.append(summary_text[n])
-                    value_flag == n + 1
-                    # print("Value in else-else: {}".format(text))
-        data = {
-            key: text
-        }
-        summary_data.update(data)
-        print("Step2: Notes data validation: {} ".format(summary_data))       
-
-
-
-
-
-
-
-
+        summary_data = json.loads(summary)
 
         # Step6: Video_Intended section should be atleast 1.
         if (len(video_intended) > 0):
@@ -328,12 +131,7 @@ def submit(request):
 
 
         # Step8: related_documents section should be atleast 1.
-        if (len(related_departments) > 0):
-            related_departments_covered = []
-            related_departments_list = related_departments.split('#')
-            for m in range(1, len(related_departments_list)):
-                related_departments_covered.append(related_departments_list[m])
-            print("Step8: related_departments length is greater than 0. {}".format(related_departments))
+        related_departments_list = related_departments.splitlines()
 
         # Step9: party_status section should be atleast 1.
         if (len(party_status) > 0):
@@ -341,82 +139,14 @@ def submit(request):
 
 
         # Step10: targeted_parties section should be atleast 1.
-
-        if (len(target_parties) > 0):
-
-            target_parties_covered = []
-
-            target_parties_list = target_parties.split('#')
-
-            for m in range(1, len(target_parties_list)):
-
-                target_parties_covered.append(target_parties_list[m])
-
-            print("Step10: target_parties length is greater than 0. {}".format(target_parties))
+        target_parties_covered = target_parties.splitlines()
 
 
 
 
 
         # Topic Scope
-        topic_scope_topics = topic_scope.split('#')
-        topic_scope_topics_list = []
-        if (len(topic_scope_topics) > 0):
-            for i in range(1, len(topic_scope_topics)):
-                topic_scope_topics_list.append(topic_scope_topics[i].split(":")[0])
-
-
-        topic_scope_text = topic_scope.splitlines()
-        print(topic_scope_text)
-        data = {}
-        topic_scope_data = {}
-        text = []
-        key_flag = 0
-        value_flag = 1
-        key = ''
-        for n in range(len(topic_scope_text)):
-            if ('#' in topic_scope_text[n]):
-                if (n == 0):
-                    key = topic_scope_text[n]
-                else:
-                    data = {
-                        key: text
-                    }
-                    topic_scope_data.update(data)
-
-                    print(topic_scope_data)
-
-                    key = topic_scope_text[n]
-
-                    text = []
-
-                # print("Key: {}".format(key))
-
-            else:
-
-                if (value_flag == n):
-
-                    text.append(topic_scope_text[n])
-
-                    value_flag += 1
-
-                    # print("Value in else: {}".format(text))
-
-                else:
-
-                    text.append(topic_scope_text[n])
-
-                    value_flag == n + 1
-
-                    # print("Value in else-else: {}".format(text))
-
-        data = {
-
-            key: text
-
-        }
-
-        topic_scope_data.update(data)
+        topic_scope_data = json.loads(topic_scope)
 
         print("Step2: Notes data validation: {} ".format(topic_scope_data))
 
@@ -475,7 +205,7 @@ def submit(request):
 
             'validity_status':1,
 
-            'notes':new_data,
+            'notes':notes_data,
 
             'topics':topics_topics_list,
 
@@ -487,7 +217,7 @@ def submit(request):
 
             'video_intended':video_intended,
 
-            'related_departments':related_departments_covered,
+            'related_departments':related_departments_list,
 
             'party_status':party_status,
 
@@ -508,11 +238,8 @@ def submit(request):
 
 
 
-        #print(context)
-
         r = requests.post('https://c43w8otvfe.execute-api.us-west-1.amazonaws.com/test/updatevideodata', json=context)
 
-        #print(r)
 
         if r.status_code == 200:
 

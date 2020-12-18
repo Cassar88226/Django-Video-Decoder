@@ -15,28 +15,28 @@ var topic_scope_json = {
 };
 
 function updateJSON(data) {
-    notes_json = data;   
+    notes_json = data;
     var json_str = JSON.stringify(notes_json);
     $('#notes').val(json_str);
     // printJSON();
 }
 
 function updateQuestionJSON(data) {
-    questions_json = data;   
+    questions_json = data;
     var json_str = JSON.stringify(questions_json);
     $('#questions').val(json_str);
 }
 
 function updateSummaryJSON(data) {
-    summary_json = data;   
+    summary_json = data;
     var json_str = JSON.stringify(summary_json);
-    $('#questions').val(json_str);
+    $('#summary').val(json_str);
 }
 
 function updateTopicScopeJSON(data) {
-    topic_scope_json = data;   
+    topic_scope_json = data;
     var json_str = JSON.stringify(topic_scope_json);
-    $('#questions').val(json_str);
+    $('#topic_scope').val(json_str);
 }
 
 function showPath(path) {

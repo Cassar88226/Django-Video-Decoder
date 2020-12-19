@@ -59,7 +59,7 @@
             </select>
         </div>
         <div class='col-md-4'>
-            <input type="date" class='form-control' id='publishedAt' name="publishedAt" size = 100 >
+            <input type="date" class='form-control' id='publishedAt' name="publishedAt" size = 100 value='{{ publishedAt }}' >
         </div>
         <div class='col-md-4'>
             <input class='btn btn-primary' id="query_submit" type="submit" value="Submit">
@@ -81,12 +81,12 @@
 
     <div class='row'>
         <div class='col-md-6'>
-            <div class='title'>VideoID </div>
+            <div class='title'>Video ID </div>
 
             <div style='margin-top:5px'><input class='form-control' type="text" name="video_id" size = 100 value="{{ droplets.video_id }}" readonly ></div>
         </div>
         <div class='col-md-6'>
-            <div class='title'>PublishedAt </div>
+            <div class='title'>Published At </div>
 
             <div style='margin-top:5px'><input type="text" class='form-control' name="publishedAt" size = 100 value="{{ droplets.publishedAt }}" readonly /></div>
         </div>
@@ -95,12 +95,12 @@
 
     <div class='row'>
         <div class='col-md-6'>
-            <div class='title'>Search_kind </div>
+            <div class='title'>Search Kind </div>
 
             <div style='margin-top:5px'><input type="text" class='form-control' name="search_kind" size = 100 value="{{ droplets.search_kind }}" readonly /></div>
         </div>
         <div class='col-md-6'>
-            <div class='title'>Search_etag </div>
+            <div class='title'>Search Etag </div>
 
             <div style='margin-top:5px'><input type="text" class='form-control' name="search_etag" size = 100 value="{{ droplets.search_etag }}" readonly /></div>
         </div>
@@ -108,12 +108,12 @@
 
     <div class='row'>
         <div class='col-md-6'>
-            <div class='title'>Video_kind </div>
+            <div class='title'>Video Kind </div>
 
             <div style='margin-top:5px'><input type="text" class='form-control' name="video_kind" size = 100 value="{{ droplets.video_kind }}" readonly /></div>
         </div>
         <div class='col-md-6'>
-            <div class='title'>channel_title </div>
+            <div class='title'>Channel Title </div>
 
             <div style='margin-top:5px'><input type="text" class='form-control' name="channel_title" size = 100 value="{{ droplets.channel_title }}" readonly /></div>
         </div>
@@ -123,12 +123,12 @@
 
     <div class='row'>
         <div class='col-md-6'>
-            <div class='title'>Video_title </div>
+            <div class='title'>Video Title </div>
 
             <div style='margin-top:5px'><textarea  class='form-control' name="video_title" size = 100 style="resize: none;" readonly>{{ droplets.video_title }}</textarea></div>
         </div>
         <div class='col-md-6'>
-            <div class='title'>description </div>
+            <div class='title'>Description </div>
 
             <div style='margin-top:5px'><textarea class='form-control' name="description" size = 100  style="resize: none;" readonly>{{ droplets.description }}</textarea></div>
         </div>
@@ -137,12 +137,12 @@
 
     <div class='row'>
         <div class='col-md-6'>
-            <div class='title'>channel_id </div>
+            <div class='title'>Channel Id </div>
 
             <div style='margin-top:5px'><input type="text" class='form-control' name="channel_id" size = 100 value="{{ droplets.channel_id }}" readonly /></div>
         </div>
         <div class='col-md-6'>
-            <div class='title'>image_default_url </div>
+            <div class='title'>Image Default Url </div>
 
             <div style='margin-top:5px'><input type="text" class='form-control' name="image_default_url" size = 100 value="{{ droplets.image_default_url }}" readonly /></div>
         </div>
@@ -150,17 +150,17 @@
 
     <div class='row'>
         <div class='col-md-4'>
-            <div class='title'>image_default_width </div>
+            <div class='title'>Image Default Width </div>
 
             <div style='margin-top:5px'><input type="text" class='form-control' name="image_default_width" size = 100 value="{{ droplets.image_default_width }}" readonly /></div>
         </div>
         <div class='col-md-4'>
-            <div class='title'>image_medium_width </div>
+            <div class='title'>Image Medium Width </div>
 
             <div style='margin-top:5px'><input type="text" class='form-control' name="image_medium_width" size = 100 value="{{ droplets.image_medium_width }}" readonly /></div>
         </div>
         <div class='col-md-4'>
-            <div class='title'>Image_High_Width </div>
+            <div class='title'>Image High Width </div>
 
             <div style='margin-top:5px'><input type="text" class='form-control' name="image_high_width" size = 100 value="{{ droplets.image_high_width }}" readonly /></div>
         </div>
@@ -168,17 +168,17 @@
 
     <div class='row'>
         <div class='col-md-4'>
-            <div class='title'>image_default_height </div>
+            <div class='title'>Image Default Height </div>
 
             <div style='margin-top:5px'><input type="text" class='form-control' name="image_default_height" size = 100 value="{{ droplets.image_default_height }}" readonly /></div>
         </div>
         <div class='col-md-4'>
-            <div class='title'>image_medium_height </div>
+            <div class='title'>Image Medium Height </div>
 
             <div style='margin-top:5px'><input type="text" class='form-control' name="image_medium_height" size = 100 value="{{ droplets.image_medium_height }}" readonly /></div>
         </div>
         <div class='col-md-4'>
-            <div class='title'>Image_High_Height </div>
+            <div class='title'>Image High Height </div>
 
             <div style='margin-top:5px'><input type="text" class='form-control' name="image_high_height" size = 100 value="{{ droplets.image_high_height }}" readonly /></div>
         </div>
@@ -186,12 +186,12 @@
 
     <div class='row'>
         <div class='col-md-6'>
-            <div class='title'>image_medium </div>
+            <div class='title'>Image Medium </div>
 
             <div style='margin-top:5px'><input type="text" class='form-control' name="image_medium" size = 100 value="{{ droplets.image_medium }}" readonly /></div>
         </div>
         <div class='col-md-6'>
-            <div class='title'>image_high </div>
+            <div class='title'>Image High </div>
 
             <div style='margin-top:5px'><input type="text" class='form-control' name="image_high" size = 100 value="{{ droplets.image_high }}" readonly /></div>
         </div>
@@ -199,12 +199,12 @@
 
     <div class='row'>
         <div class='col-md-6'>
-            <div class='title'>Live_Broadcast_Content </div>
+            <div class='title'>Live Broadcast Content </div>
 
             <div style='margin-top:5px'><input type="text" class='form-control' name="liveBroadcastContent" size = 100 value="{{ droplets.liveBroadcastContent }}" readonly /></div>
         </div>
         <div class='col-md-6'>
-            <div class='title'>validity_status </div>
+            <div class='title'>Validity Status </div>
 
             <div style='margin-top:5px'><input type="text" class='form-control' name="validity_status" size = 100 value="{{ droplets.validity_status }}" readonly /></div>
         </div>
@@ -212,28 +212,24 @@
 
     <div class='row'>
         <div class='col-md-6'>
-            <div class='title'>Video_Url </div>
+            <div class='title'>Video Url </div>
 
             <div style='margin-top:5px'><input type="text" class='form-control' id = 'video_url' name="video_url" size = 100 value="{{ droplets.video_url }}" readonly /></div>
         </div>
         <div class='col-md-6'>
             <div class='title'>Video </div>
-            {{
-                video_url = droplets.video_url
-                
-            }}
-            <div style='margin-top:5px'><iframe width="100%", height="315px" src="{{ droplets.video_url }}"></iframe></div>
+            <div style='margin-top:5px'><iframe width="100%", height="315px" src="{{ droplets.watch_url }}"></iframe></div>
         </div>
     </div>
 
     <div class='row'>
         <div class='col-md-6'>
-            <div class='title'>English_Text </div>
+            <div class='title'>English Text </div>
 
             <div style='margin-top:5px'><textarea  class='form-control' name="old_english_text" rows="8" style="resize: none;" readonly>{{ droplets.eng_text }}</textarea></div>
         </div>
         <div class='col-md-6'>
-            <div class='title'>Telugu_Text </div>
+            <div class='title'>Telugu Text </div>
 
             <div style='margin-top:5px'><textarea class='form-control' name="old_telugu_text" rows="8"  style="resize: none;" readonly>{{ droplets.telugu_text }}</textarea></div>
         </div>
@@ -241,12 +237,12 @@
 
     <div class='row'>
         <div class='col-md-6'>
-            <div class='title'>New_English_Text </div>
+            <div class='title'>New English Text </div>
 
             <div style='margin-top:5px'><textarea  class='form-control' name="english_text" rows="8" style="resize: none;">{{ droplets.eng_text }}</textarea></div>
         </div>
         <div class='col-md-6'>
-            <div class='title'>New_Telugu_Text </div>
+            <div class='title'>New Telugu Text </div>
 
             <div style='margin-top:5px'><textarea class='form-control' name="telugu_text" rows="8"  style="resize: none;">{{ droplets.telugu_text }}</textarea></div>
         </div>
@@ -256,12 +252,12 @@
 
     <br>    <div class='row'>
         <div class='col-md-6'>
-            <div class='title'>Tags_Provided </div>
+            <div class='title'>Tags Provided </div>
 
             <div style='margin-top:5px'><input type="text" class='form-control' name="tags" size = 100 value="{{ droplets.tags }}" /></div>
         </div>
         <div class='col-md-6'>
-            <div class='title'>New_Video_Title </div>
+            <div class='title'>New Video Title </div>
 
             <div style='margin-top:5px'><input type="text" class='form-control' name="new_title" size = 100 value="" /></div>
         </div>
@@ -290,7 +286,7 @@
 
     <div class='row'>
         <div class='col-md-12'>
-            <div class='title'>Topic_Scope </div>
+            <div class='title'>Topic Scope </div>
             <div id='topic_scope_editor' class='json-editor'></div><textarea name="topic_scope" id='topic_scope' style="display: none;">{"key":[]}</textarea>
         </div>
     </div>
@@ -298,7 +294,7 @@
 
     <div class='row'>
         <div class='col-md-6'>
-            <div class='title'>Video_Intended_to </div>
+            <div class='title'>Video Intended To </div>
 
             <select class='form-control' id="video_intended[]" name = "video_intended[]" multiple="multiple">
 
@@ -317,7 +313,7 @@
             </select>
     </div>
         <div class='col-md-6'>
-            <div class='title'>Party_Status </div>
+            <div class='title'>Party Status </div>
 
             <select class='form-control' id="party_status" name = "party_status[]" multiple="multiple">
 
@@ -333,7 +329,7 @@
 
     <div class='row'>
         <div class='col-md-6'>
-            <div class='title'>Topics_Covered </div>
+            <div class='title'>Topics Covered </div>
 
             <div style='margin-top:5px'><textarea  class='form-control' name="topics" rows="5" style="resize: none;"></textarea></div>
         </div>
@@ -346,12 +342,12 @@
 
     <div class='row'>
         <div class='col-md-6'>
-            <div class='title'>Related_Departments </div>
+            <div class='title'>Related Departments </div>
 
             <div style='margin-top:5px'><textarea  class='form-control' name="related_departments" rows="5" style="resize: none;"></textarea></div>
         </div>
         <div class='col-md-6'>
-            <div class='title'>Target_Parties </div>
+            <div class='title'>Target Parties </div>
 
             <div style='margin-top:5px'><textarea class='form-control' name="target_parties" rows="5"  style="resize: none;"></textarea></div>
         </div>
@@ -421,14 +417,14 @@
 <script src="{% static 'main/jsoneditor.js' %}"></script>
 <script src="{% static 'main/main.js' %}"></script>
 <script>
-    $(document).ready(function() {
-        var today = new Date();
-        var dd = String(today.getDate()).padStart(2, '0');
-        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        var yyyy = today.getFullYear();
-        var str = yyyy + "-" + mm + "-"+dd;
-        $("#publishedAt").val(str);
-    });
+    // $(document).ready(function() {
+    //     var today = new Date();
+    //     var dd = String(today.getDate()).padStart(2, '0');
+    //     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    //     var yyyy = today.getFullYear();
+    //     var str = yyyy + "-" + mm + "-"+dd;
+    //     $("#publishedAt").val(str);
+    // });
 
 </script>
 </div>

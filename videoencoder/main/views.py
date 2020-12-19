@@ -55,7 +55,7 @@ class GetDroplets(TemplateView):
             "channel_title":channel_title,
             "publishedAt":publishedAt,
         }
-        r = requests.get(url,context)
+        r = requests.get(url,json = context)
         droplets = r.json()
 
         context = {
@@ -73,16 +73,15 @@ def query_data(request):
         "channel_title":channel_title,
         "publishedAt":publishedAt,
     }
-    r = requests.get(url,context)
+    r = requests.get(url,json=context)
     droplets = r.json()
     context = {
             'droplets': json.loads(droplets['body']),
+            'publishedAt' :publishedAt,
+            'channel_title':channel_title
     }
-    return render(request, 'droplets.html', json=context)
+    return render(request, 'droplets.html', context)
 
-    return HttpResponse('Could not save data')
-
-    # https://c43w8otvfe.execute-api.us-west-1.amazonaws.com/test/videodata
 
 
 def submit(request):
@@ -259,10 +258,23 @@ def submit(request):
 
         r = requests.post('https://c43w8otvfe.execute-api.us-west-1.amazonaws.com/test/updatevideodata', json=context)
 
-
+        
         if r.status_code == 200:
 
-            return HttpResponse(r)
+            url = 'https://c43w8otvfe.execute-api.us-west-1.amazonaws.com/test/videodata'
+            context = {
+                "channel_title":channel_title,
+                "publishedAt":publishedAt,
+            }
+            r = requests.get(url,json=context)
+            droplets = r.json()
+            publishedAt = publishedAt[0:10]
+            context = {
+                'droplets': json.loads(droplets['body']),
+                "channel_title":channel_title,
+                "publishedAt":publishedAt,
+            }
+            return render(request, 'droplets.html', context)
 
         return HttpResponse('Could not save data')
 

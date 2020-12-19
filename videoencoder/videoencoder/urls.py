@@ -8,5 +8,6 @@ from main import views
 urlpatterns = [
     path('', include('main.urls')),
     path('admin/', admin.site.urls),
-    url(r'^submit', views.submit)
+    url(r'^submit', views.submit),
+    url(r'^query_data', views.query_data)
 ]

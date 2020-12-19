@@ -49,7 +49,7 @@ $(document).ready(function() {
     $('#questions_editor').jsonEditor(questions_json, { change: updateQuestionJSON, propertyclick: showPath });
     $('#summary_editor').jsonEditor(summary_json, { change: updateSummaryJSON, propertyclick: showPath });
     $('#topic_scope_editor').jsonEditor(topic_scope_json, { change: updateTopicScopeJSON, propertyclick: showPath });
-
+   
 });
 
 

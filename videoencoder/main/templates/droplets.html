@@ -16,41 +16,7 @@
 
     <link rel="shortcut icon" type="image/png" href="https://assets.digitalocean.com/logos/favicon.png"/>
 
-    <style>
 
-table {
-
-  font-family: arial, sans-serif;
-
-  border-collapse: collapse;
-
-  width: 100%;
-
-}
-
-
-
-td, th {
-
-  border: 1px solid #dddddd;
-
-  text-align: left;
-
-  padding: 8px;
-
-}
-
-
-
-tr:nth-child(even) {
-
-  background-color: #dddddd;
-
-}
-
-
-
-    </style>
 
 </head>
 
@@ -60,7 +26,7 @@ tr:nth-child(even) {
 
 {% if request.user.is_authenticated %}
 
-<nav aria-label="main navigation" class="navbar is-light" role="navigation">
+<nav aria-label="main navigation" class="navbar is-light" role="navigation" style='align-items: inherit;'>
 
     <div class="navbar-brand">
 
@@ -68,49 +34,43 @@ tr:nth-child(even) {
 
             <img atl="DigitalOcean" src="https://assets.digitalocean.com/logos/DO_Logo_icon_blue.png"
 
-                 style="margin-right: 0.5em;">News4U
+                 style="margin-right: 0.5em; width: 50%; height: 50%;">News4U
 
         </div>
 
     </div>
-    <div ><a href="#" id='menu_logout'>Log out</a></div>
+    <div ><a href="#" id='menu_logout'><h5>Log out</h5></a></div>
 
 </nav>
 
 
 
-<form id ="queryForm" name = "queryForm" action = "https://c43w8otvfe.execute-api.us-west-1.amazonaws.com/test/videodata" method = "GET">
+<form id ="queryForm" name = "queryForm" action = "query_data" method = "POST">
+    {% csrf_token %}
+    <div class='row'>
+        <div class='col-md-4'><select class='form-control' name="channel_title" id="party-select">
 
-    <table id="query_table">
+            <option value="JanaSena Party">JanaSena Party</option>
+    
+            <option value="Telugu Desam Party">Telugu Desam Party</option>
+    
+            <option value="YSRCP Party">YSRCP Party</option>
+    
+            </select>
+        </div>
+        <div class='col-md-4'>
+            <input type="date" class='form-control' id='publishedAt' name="publishedAt" size = 100 >
+        </div>
+        <div class='col-md-4'>
+            <input class='btn btn-primary' id="query_submit" type="submit" value="Submit">
+        </div>
+    </div>
 
-        <tr>
-
-            <th><select name="party" id="party-select">
-
-            <option value="jsp">JanaSena Party</option>
-
-            <option value="tdp">Telugu Desam Party</option>
-
-            <option value="ysrcp">YSRCP Party</option>
-
-            </select></th>
-
-            <th><input type="text" name="publishedAt" size = 100 value="yyyy-mm-dd" ></th>
-
-        </tr>
-
-    </table>
-
-    <input id="query_submit" type="submit" value="Submit">
-
-    <br>
-
-    <br>
-
-    <br>
 
 </form>
 
+<hr style="height:2px;border-width:0;color:gray;background-color:gray">
+<br>
 
 
 
@@ -119,370 +79,288 @@ tr:nth-child(even) {
 
       method="POST"> {% csrf_token %}
 
+    <div class='row'>
+        <div class='col-md-6'>
+            <div class='title'>VideoID </div>
 
+            <div style='margin-top:5px'><input class='form-control' type="text" name="video_id" size = 100 value="{{ droplets.video_id }}" readonly ></div>
+        </div>
+        <div class='col-md-6'>
+            <div class='title'>PublishedAt </div>
 
-    <table id="form_table">
+            <div style='margin-top:5px'><input type="text" class='form-control' name="publishedAt" size = 100 value="{{ droplets.publishedAt }}" readonly /></div>
+        </div>
+    </div>
 
-        <tr>
+
+    <div class='row'>
+        <div class='col-md-6'>
+            <div class='title'>Search_kind </div>
+
+            <div style='margin-top:5px'><input type="text" class='form-control' name="search_kind" size = 100 value="{{ droplets.search_kind }}" readonly /></div>
+        </div>
+        <div class='col-md-6'>
+            <div class='title'>Search_etag </div>
 
-            <th>VideoID</th>
+            <div style='margin-top:5px'><input type="text" class='form-control' name="search_etag" size = 100 value="{{ droplets.search_etag }}" readonly /></div>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-md-6'>
+            <div class='title'>Video_kind </div>
+
+            <div style='margin-top:5px'><input type="text" class='form-control' name="video_kind" size = 100 value="{{ droplets.video_kind }}" readonly /></div>
+        </div>
+        <div class='col-md-6'>
+            <div class='title'>channel_title </div>
 
-            <th><input type="text" name="video_id" size = 100 value="{{ droplets.video_id }}" readonly ></th>
+            <div style='margin-top:5px'><input type="text" class='form-control' name="channel_title" size = 100 value="{{ droplets.channel_title }}" readonly /></div>
+        </div>
+
+
+    </div>
+
+    <div class='row'>
+        <div class='col-md-6'>
+            <div class='title'>Video_title </div>
+
+            <div style='margin-top:5px'><textarea  class='form-control' name="video_title" size = 100 style="resize: none;" readonly>{{ droplets.video_title }}</textarea></div>
+        </div>
+        <div class='col-md-6'>
+            <div class='title'>description </div>
+
+            <div style='margin-top:5px'><textarea class='form-control' name="description" size = 100  style="resize: none;" readonly>{{ droplets.description }}</textarea></div>
+        </div>
+    </div>
+
+
+    <div class='row'>
+        <div class='col-md-6'>
+            <div class='title'>channel_id </div>
+
+            <div style='margin-top:5px'><input type="text" class='form-control' name="channel_id" size = 100 value="{{ droplets.channel_id }}" readonly /></div>
+        </div>
+        <div class='col-md-6'>
+            <div class='title'>image_default_url </div>
+
+            <div style='margin-top:5px'><input type="text" class='form-control' name="image_default_url" size = 100 value="{{ droplets.image_default_url }}" readonly /></div>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-md-4'>
+            <div class='title'>image_default_width </div>
 
-        </tr>
+            <div style='margin-top:5px'><input type="text" class='form-control' name="image_default_width" size = 100 value="{{ droplets.image_default_width }}" readonly /></div>
+        </div>
+        <div class='col-md-4'>
+            <div class='title'>image_medium_width </div>
+
+            <div style='margin-top:5px'><input type="text" class='form-control' name="image_medium_width" size = 100 value="{{ droplets.image_medium_width }}" readonly /></div>
+        </div>
+        <div class='col-md-4'>
+            <div class='title'>Image_High_Width </div>
+
+            <div style='margin-top:5px'><input type="text" class='form-control' name="image_high_width" size = 100 value="{{ droplets.image_high_width }}" readonly /></div>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-md-4'>
+            <div class='title'>image_default_height </div>
+
+            <div style='margin-top:5px'><input type="text" class='form-control' name="image_default_height" size = 100 value="{{ droplets.image_default_height }}" readonly /></div>
+        </div>
+        <div class='col-md-4'>
+            <div class='title'>image_medium_height </div>
+
+            <div style='margin-top:5px'><input type="text" class='form-control' name="image_medium_height" size = 100 value="{{ droplets.image_medium_height }}" readonly /></div>
+        </div>
+        <div class='col-md-4'>
+            <div class='title'>Image_High_Height </div>
+
+            <div style='margin-top:5px'><input type="text" class='form-control' name="image_high_height" size = 100 value="{{ droplets.image_high_height }}" readonly /></div>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-md-6'>
+            <div class='title'>image_medium </div>
+
+            <div style='margin-top:5px'><input type="text" class='form-control' name="image_medium" size = 100 value="{{ droplets.image_medium }}" readonly /></div>
+        </div>
+        <div class='col-md-6'>
+            <div class='title'>image_high </div>
+
+            <div style='margin-top:5px'><input type="text" class='form-control' name="image_high" size = 100 value="{{ droplets.image_high }}" readonly /></div>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class='col-md-6'>
+            <div class='title'>Live_Broadcast_Content </div>
+
+            <div style='margin-top:5px'><input type="text" class='form-control' name="liveBroadcastContent" size = 100 value="{{ droplets.liveBroadcastContent }}" readonly /></div>
+        </div>
+        <div class='col-md-6'>
+            <div class='title'>validity_status </div>
+
+            <div style='margin-top:5px'><input type="text" class='form-control' name="validity_status" size = 100 value="{{ droplets.validity_status }}" readonly /></div>
+        </div>
+    </div>
 
-        <tr>
+    <div class='row'>
+        <div class='col-md-6'>
+            <div class='title'>Video_Url </div>
 
-            <th>PublishedAt</th>
+            <div style='margin-top:5px'><input type="text" class='form-control' id = 'video_url' name="video_url" size = 100 value="{{ droplets.video_url }}" readonly /></div>
+        </div>
+        <div class='col-md-6'>
+            <div class='title'>Video </div>
 
-            <th><input type="text" name="publishedAt" size = 100 value="{{ droplets.publishedAt }}" readonly></th>
+            <div style='margin-top:5px'><iframe width="100%", height="315px" src="{{ droplets.video_url }}"></iframe></div>
+        </div>
+    </div>
 
-        </tr>
+    <div class='row'>
+        <div class='col-md-6'>
+            <div class='title'>English_Text </div>
 
-        <tr>
+            <div style='margin-top:5px'><textarea  class='form-control' name="old_english_text" rows="8" style="resize: none;" readonly>{{ droplets.eng_text }}</textarea></div>
+        </div>
+        <div class='col-md-6'>
+            <div class='title'>Telugu_Text </div>
 
-            <th>Search_kind</th>
+            <div style='margin-top:5px'><textarea class='form-control' name="old_telugu_text" rows="8"  style="resize: none;" readonly>{{ droplets.telugu_text }}</textarea></div>
+        </div>
+    </div>
 
-            <th><input type="text" name="search_kind" size = 100 value="{{ droplets.search_kind }}" readonly></th>
+    <div class='row'>
+        <div class='col-md-6'>
+            <div class='title'>New_English_Text </div>
 
-        </tr>
+            <div style='margin-top:5px'><textarea  class='form-control' name="english_text" rows="8" style="resize: none;">{{ droplets.eng_text }}</textarea></div>
+        </div>
+        <div class='col-md-6'>
+            <div class='title'>New_Telugu_Text </div>
 
-        <tr>
+            <div style='margin-top:5px'><textarea class='form-control' name="telugu_text" rows="8"  style="resize: none;">{{ droplets.telugu_text }}</textarea></div>
+        </div>
+    </div>
 
-            <th>Search_etag</th>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
-            <th><input type="text" name="search_etag" size = 100 value="{{ droplets.search_etag }}" readonly></th>
+    <br>    <div class='row'>
+        <div class='col-md-6'>
+            <div class='title'>Tags_Provided </div>
 
-        </tr>
+            <div style='margin-top:5px'><input type="text" class='form-control' name="tags" size = 100 value="{{ droplets.tags }}" /></div>
+        </div>
+        <div class='col-md-6'>
+            <div class='title'>New_Video_Title </div>
 
-        <tr>
+            <div style='margin-top:5px'><input type="text" class='form-control' name="new_title" size = 100 value="" /></div>
+        </div>
+    </div>
 
-            <th>Video_kind</th>
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='title'>Notes </div>
+            <div id='note_editor' class='json-editor'></div><textarea name="notes" id='notes' style="display: none;">{"key":[]}</textarea>
+        </div>
+    </div>
 
-            <th><input type="text" name="video_kind" size = 100 value="{{ droplets.video_kind }}" readonly></th>
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='title'>Questions </div>
+            <div id='questions_editor' class='json-editor'></div><textarea name="questions" id='questions' style="display: none;">{"key":[]}</textarea>
+        </div>
+    </div>
 
-        </tr>
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='title'>Summary </div>
+            <div id='summary_editor' class='json-editor'></div><textarea name="summary" id='summary' style="display: none;">{"key":[]}</textarea>
+        </div>
+    </div>
 
-        <tr>
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='title'>Topic_Scope </div>
+            <div id='topic_scope_editor' class='json-editor'></div><textarea name="topic_scope" id='topic_scope' style="display: none;">{"key":[]}</textarea>
+        </div>
+    </div>
 
-            <th>Video_title</th>
 
-            <th><input type="text" name="video_title" size = 100 value="{{ droplets.video_title }}" readonly></th>
+    <div class='row'>
+        <div class='col-md-6'>
+            <div class='title'>Video_Intended_to </div>
 
-        </tr>
+            <select class='form-control' id="video_intended[]" name = "video_intended[]" multiple="multiple">
 
-        <tr>
+                <option value="attacking">Attacking</option>
 
-            <th>description</th>
+                <option value="defending">Defending</option>
 
-            <th><input type="text" name="description" size = 150 value="{{ droplets.description }}" readonly></th>
+                <option value="suggesting">Suggesting</option>
 
-        </tr>
+                <option value="supporting">Supporting</option>
 
-        <tr>
+                <option value="promotion">Promotion</option>
 
-            <th>channel_title</th>
+                <option value="fact_check">Fact-Check</option>
 
-            <th><input type="text" name="channel_title" size = 100 value="{{ droplets.channel_title }}" readonly></th>
+            </select>
+    </div>
+        <div class='col-md-6'>
+            <div class='title'>Party_Status </div>
 
-        </tr>
+            <select class='form-control' id="party_status" name = "party_status[]" multiple="multiple">
 
-        <tr>
+                <option value="ruling">Ruling</option>
 
-            <th>channel_id</th>
+                <option value="opposition">Opposition</option>
 
-            <th><input type="text" name="channel_id" size = 100 value="{{ droplets.channel_id }}" readonly></th>
+                <option value="independent">Independent</option>
 
-        </tr>
+            </select>
+        </div>
+    </div>
 
-        <tr>
+    <div class='row'>
+        <div class='col-md-6'>
+            <div class='title'>Topics_Covered </div>
 
-            <th>image_default_url</th>
+            <div style='margin-top:5px'><textarea  class='form-control' name="topics" rows="5" style="resize: none;"></textarea></div>
+        </div>
+        <div class='col-md-6'>
+            <div class='title'>Speakers </div>
 
-            <th><input type="text" name="image_default_url" size = 100 value="{{ droplets.image_default_url }}" readonly></th>
+            <div style='margin-top:5px'><textarea class='form-control' name="speakers" rows="5"  style="resize: none;"></textarea></div>
+        </div>
+    </div>
 
-        </tr>
+    <div class='row'>
+        <div class='col-md-6'>
+            <div class='title'>Related_Departments </div>
 
-        <tr>
+            <div style='margin-top:5px'><textarea  class='form-control' name="related_departments" rows="5" style="resize: none;"></textarea></div>
+        </div>
+        <div class='col-md-6'>
+            <div class='title'>Target_Parties </div>
 
-            <th>image_default_width</th>
+            <div style='margin-top:5px'><textarea class='form-control' name="target_parties" rows="5"  style="resize: none;"></textarea></div>
+        </div>
+    </div>
 
-            <th><input type="text" name="image_default_width" size = 100 value="{{ droplets.image_default_width }}" readonly></th>
-
-        </tr>
-
-        <tr>
-
-            <th>image_default_height</th>
-
-            <th><input type="text" name="image_default_height" size = 100 value="{{ droplets.image_default_height }}" readonly></th>
-
-        </tr>
-
-        <tr>
-
-            <th>image_medium</th>
-
-            <th><input type="text" name="image_medium" size = 100 value="{{ droplets.image_medium }}" readonly></th>
-
-        </tr>
-
-        <tr>
-
-            <th>image_medium_width</th>
-
-            <th><input type="text" name="image_medium_width" size = 100 value="{{ droplets.image_medium_width }}" readonly></th>
-
-        </tr>
-
-        <tr>
-
-            <th>image_medium_height</th>
-
-            <th><input type="text" name="image_medium_height" size = 100 value="{{ droplets.image_medium_height }}" readonly></th>
-
-        </tr>
-
-        <tr>
-
-            <th>image_high</th>
-
-            <th><input type="text" name="image_high" size = 100 value="{{ droplets.image_high }}" readonly></th>
-
-        </tr>
-
-        <tr>
-
-            <th>Image_High_Width</th>
-
-            <th><input type="text" name="image_high_width" size = 100 value="{{ droplets.image_high_width }}" readonly></th>
-
-        </tr>
-
-        <tr>
-
-            <th>Image_High_Height</th>
-
-            <th><input type="text" name="image_high_height" size = 100 value="{{ droplets.image_high_height }}" readonly></th>
-
-        </tr>
-
-        <tr>
-
-            <th>Tags_Provided</th>
-
-            <th><input type="text" name="tags" size = 100 value="{{ droplets.tags }}" ></th>
-
-        </tr>
-
-
-
-        <tr>
-
-            <th>Live_Broadcast_Content</th>
-
-            <th><input type="text" name="liveBroadcastContent" size = 100 value="{{ droplets.liveBroadcastContent }}" readonly></th>
-
-        </tr>
-
-        <tr>
-
-            <th>validity_status</th>
-
-            <th><input type="text" name="status" size = 100 value="{{ droplets.validity_status }}" readonly></th>
-
-        </tr>
-
-        <tr>
-
-            <th>New_Video_Title</th>
-
-            <th><input type="text" id = 'new_title' name="new_title" size="100" value=""></th>
-
-        </tr>
-
-        <tr>
-
-            <th>Video_Url</th>
-
-            <th><input type="text" id = 'video_url' name="video_url" size = 100 value="{{ droplets.video_url }}" readonly>
-
-            <input type="button" id="btnPlay" value="Play"/></th>
-
-        </tr>
-
-        <tr>
-
-            <th>Video</th>
-
-            <th><embed id="video" src="" wmode="transparent" type="application/x-shockwave-flash"
-
-           width="840" height="315" allowfullscreen="true" title="Adobe Flash Player"></embed></th>
-
-        </tr>
-        <tr>
-
-            <th>English_Text</th>
-
-            <th><textarea name="old_english_text" rows="5" cols="100" readonly>{{ droplets.eng_text }}</textarea></th>
-
-        </tr>
-        <tr>
-
-            <th>Telugu_Text</th>
-
-            <th><textarea name="old_telugu_text" rows="5" cols="100" readonly>{{ droplets.telugu_text }}</textarea></th>
-
-        </tr>
-
-        <tr>
-
-            <th>New_English_Text</th>
-
-            <th><textarea name="english_text" rows="5" cols="100" >{{ droplets.eng_text }}</textarea></th>
-
-        </tr>
-        <tr>
-
-            <th>New_Telugu_Text</th>
-
-            <th><textarea name="telugu_text" rows="5" cols="100">{{ droplets.telugu_text }}</textarea></th>
-
-        </tr>
-
-        <tr>
-
-            <th>Notes</th>
-
-            <th><div id='note_editor' class='json-editor'></div><textarea name="notes" rows="10" cols="100" id='notes' style="display: none;">{"key":[]}</textarea><br></th>
-
-        </tr>
-
-        <tr>
-
-            <th>Topics_Covered</th>
-
-            <th><textarea name="topics" rows="5" cols="100"></textarea></th>
-
-        </tr>
-
-        <tr>
-
-            <th>Speakers</th>
-
-            <th><textarea name="speakers" rows="5" cols="100"></textarea></th>
-
-        </tr>
-
-        <tr>
-
-            <th>Questions</th>
-
-            <th><div id='questions_editor' class='json-editor'></div><textarea name="questions" rows="10" cols="100" id='questions' style="display: none;">{"key":[]}</textarea><br></th>
-
-        </tr>
-
-        <tr>
-
-            <th>Summary</th>
-
-            <th><div id='summary_editor' class='json-editor'></div><textarea name="summary" rows="5" cols="100" id='summary' style="display: none;">{"key":[]}</textarea></th>
-
-        </tr>
-
-        <tr>
-
-            <th>Video_Intended_to</th>
-
-            <th>
-                <select id="video_intended[]" name = "video_intended[]" multiple="multiple">
-
-                    <option value="attacking">Attacking</option>
-
-                    <option value="defending">Defending</option>
-
-                    <option value="suggesting">Suggesting</option>
-
-                    <option value="supporting">Supporting</option>
-
-                    <option value="promotion">Promotion</option>
-
-                    <option value="fact_check">Fact-Check</option>
-
-                </select>
-            </th>
-
-        </tr>
-
-        <tr>
-
-            <th>Related_Departments</th>
-
-            <th><textarea name="related_departments" rows="5" cols="100"></textarea></th>
-
-        </tr>
-
-        <tr>
-
-            <th>Party_Status</th>
-
-            <th>
-                <select id="party_status" name = "party_status[]" multiple="multiple">
-
-                    <option value="ruling">Ruling</option>
-
-                    <option value="opposition">Opposition</option>
-
-                    <option value="independent">Independent</option>
-
-                </select>
-            </th>
-
-        </tr>
-
-        <tr>
-
-            <th>Topic_Scope</th>
-
-            <th><div id='topic_scope_editor' class='json-editor'></div><textarea name="topic_scope" rows="5" cols="100" id="topic_scope", style="display: none;">{"key":[]}</textarea></th>
-
-        </tr>
-
-        <tr>
-
-            <th>Target_Parties</th>
-
-            <th><textarea name="target_parties" rows="5" cols="100"></textarea></th>
-
-        </tr>
-
-
-
-
-    </table>
-
-
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-
-    <script type="text/javascript">
-
-    $("body").on("click", "#btnPlay", function () {
-
-        var url = $("#video_url").val();
-
-        url = url.split('v=')[1];
-
-        url = "https://www.youtube.com/v/" + url
-
-        url = url.split("'")[0]
-
-        $("#video")[0].src = url;
-
-    });
-
-    </script>
-
-    <input id="submit" type="submit" value="Submit">
+    <div class='row'>
+        <div class='col-md-12'>
+            <div class='d-flex justify-content-center'>
+                <input class='btn btn-primary' id="submit" type="submit" value="Submit">
+            </div>
+        </div>
+    </div>
 
 </form>
 
@@ -539,6 +417,17 @@ tr:nth-child(even) {
 <script src="{% static 'main/jquery.jsoneditor.js' %}"></script>
 <script src="{% static 'main/jsoneditor.js' %}"></script>
 <script src="{% static 'main/main.js' %}"></script>
+<script>
+    $(document).ready(function() {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var str = yyyy + "-" + mm + "-"+dd;
+        $("#publishedAt").val(str);
+    });
+
+</script>
 </div>
 </body>
 

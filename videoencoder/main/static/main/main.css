@@ -101,11 +101,14 @@
     background-color: #fff;
     background-position: 5px 12px;
 }
-/* .button, input[type=submit], input[type=button], .submit-row input, a.button {
-    background: #79aec8;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-} */
+
+.row{
+    padding-bottom: 20px;
+}
+.title{
+    color: #4167b8;
+    font-weight: bold;
+    font-family: ui-serif;
+    padding-left:10px;
+    font-size: larger;
+}

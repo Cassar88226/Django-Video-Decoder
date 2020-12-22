@@ -106,6 +106,7 @@ def submit(request):
         tags = request.POST.get('tags')
         new_title = request.POST.get('new_title')
         video_url = request.POST.get('video_url')
+        complete_video = request.POST.get('complete_video')
         liveBroadcastContent = request.POST.get('liveBroadcastContent')
         validity_status = request.POST.get('validity_status')
         notes = request.POST.get('notes')
@@ -122,7 +123,6 @@ def submit(request):
         english_text = request.POST.get('english_text')
         telugu_text = request.POST.get('telugu_text')
 
-        print(notes)
 
         # Step1: Get Notes
         
@@ -216,6 +216,8 @@ def submit(request):
             'tags':tags,
 
             'video_url':video_url,
+
+            'complete_video':complete_video,
 
             'new_title':new_title,
 

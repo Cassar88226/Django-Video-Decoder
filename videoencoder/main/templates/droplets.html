@@ -48,21 +48,53 @@
 <form id ="queryForm" name = "queryForm" action = "query_data" method = "POST">
     {% csrf_token %}
     <div class='row'>
-        <div class='col-md-4'><select class='form-control' name="channel_title" id="party-select">
+        
+        <div class='col-md-3'>
+            <div class='title'>Channel Title</div>
+            <div style='margin-top:5px'>
+                <select class='form-control' name="channel_title" id="party-select">
+                    {% if channel_title == "Telugu Desam Party" %}
+                        <option value="ysrcpofficial" selected>ysrcpofficial</option>
+                    {% else %}
+                        <option value="ysrcpofficial">ysrcpofficial</option>
+                    {% endif %}
+                    {% if channel_title == "Telugu Desam Party Official" %}
+                        <option value="Telugu Desam Party Official" selected>Telugu Desam Party Official</option>
+                    {% else %}
+                        <option value="Telugu Desam Party Official">Telugu Desam Party Official</option>
+                    {% endif %}
+                    {% if channel_title == "CPIM AP" %}
+                        <option value="CPIM AP" selected>CPIM AP</option>
+                    {% else %}
+                        <option value="CPIM AP">CPIM AP</option>
+                    {% endif %}
+                    {% if channel_title == "BJP Andhra Pradesh" %}
+                        <option value="BJP Andhra Pradesh" selected>BJP Andhra Pradesh</option>
+                    {% else %}
+                        <option value="BJP Andhra Pradesh">BJP Andhra Pradesh</option>
+                    {% endif %}
+                    {% if channel_title == "JanaSena Party" %}
+                        <option value="JanaSena Party" selected>JanaSena Party</option>
+                    {% else %}
+                        <option value="JanaSena Party">JanaSena Party</option>
+                    {% endif %}
 
-            <option value="JanaSena Party">JanaSena Party</option>
-    
-            <option value="Telugu Desam Party">Telugu Desam Party</option>
-    
-            <option value="YSRCP Party">YSRCP Party</option>
-    
-            </select>
+                </select>
+            </div>
         </div>
-        <div class='col-md-4'>
-            <input type="date" class='form-control' id='publishedAt' name="publishedAt" size = 100 value='{{ publishedAt }}' >
+        <div class='col-md-3'>
+            <div class='title'>Published At</div>
+            <div style='margin-top:5px'>
+
+                <input type="date" class='form-control' id='publishedAt' name="publishedAt" size = 100 value='{{ publishedAt }}' >
+            </div>
         </div>
+
         <div class='col-md-4'>
-            <input class='btn btn-primary' id="query_submit" type="submit" value="Submit">
+            <div>&nbsp;</div>
+            <div style='margin-top:8px'>
+                <input class='btn btn-primary' id="query_submit" type="submit" value="Submit">
+            </div>
         </div>
     </div>
 
@@ -215,6 +247,14 @@
             <div class='title'>Video Url </div>
 
             <div style='margin-top:5px'><input type="text" class='form-control' id = 'video_url' name="video_url" size = 100 value="{{ droplets.video_url }}" readonly /></div>
+            <div class='title'>Complete Video</div>
+            <div style='margin-top:5px'>
+                <select class='form-control' name="complete_video" id="complete_video">
+                    <option value = "Yes">Yes</option>
+                    <option value = "No">No</option>
+                </select>
+            </div>
+    
         </div>
         <div class='col-md-6'>
             <div class='title'>Video </div>
